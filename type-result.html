@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Typing Result</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+  <section class="typing-speed-section">
+    <div>
+      <div class="typing-speed-wrapper" id="typing-result">
+        <h1>
+          <i class="fas fa-tachometer-alt"></i>
+          Your Typing Score
+        </h1>
+        <div class="content-box">
+          <div class="typing-text">
+            <p></p>
+          </div>
+          <div class="content">
+            <ul class="result-details">
+              <li class="wpm">
+                <div class="main-border-section">
+                  <span id="wpmResult">0</span>
+                  <p>WPM</p>
+                </div>
+                <p class="main-result-title">Typing Speed</p>
+              </li>
+              <li>
+                <div class="cross">
+                  <i class="fas fa-times"></i>
+                </div>
+              </li>
+              <li class="accuracy">
+                <div class="main-border-section">
+                  <span id="accuracyResult">0</span>
+                  <p>Accuracy</p>
+                </div>
+                <p class="main-result-title">Accuracy</p>
+              </li>
+              <li>
+                <div class="cross">
+                  <i class="fas fa-equals"></i>
+                </div>
+              </li>
+              <li class="net-speed">
+                <div class="main-border-section" id="result-border-section">
+                  <span id="netSpeedResult">0</span>
+                  <p>wpm</p>
+                </div>
+                <p class="main-result-title">Net Speed</p>
+              </li>
+            </ul>
+            <button onclick="retakeTest()">Retake Test</button>
+          </div>
+        </div>
+      </div>
+  </section>
+  <script>
+    function displayResults() {
+      const wpm = localStorage.getItem('wpm');
+      const mistakes = localStorage.getItem('mistakes');
+      const accuracy = localStorage.getItem('accuracy');
+      const netSpeed = localStorage.getItem('netSpeed');
+
+      document.getElementById('wpmResult').innerText = wpm;
+      document.getElementById('accuracyResult').innerText = accuracy;
+      document.getElementById('netSpeedResult').innerText = netSpeed;
+    }
+
+    function retakeTest() {
+      localStorage.clear();
+      window.location.href = 'index.html';
+    }
+
+    displayResults();
+  </script>
+</body>
+
+</html>
