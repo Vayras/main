@@ -15,7 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
     mistakes = 0,
     isTyping = false,
     totalCharsTyped = 0,
-    paragraphs = [];
+    paragraphs = [],
+    currentParagraphIndex = 0;
 
   fetch('js/paragraphs.json')
     .then(response => response.json())
@@ -89,6 +90,10 @@ document.addEventListener('DOMContentLoaded', () => {
       characters.forEach((span) => span.classList.remove('active'));
       if (charIndex < characters.length) {
         characters[charIndex].classList.add('active');
+      } else {
+        // If current paragraph is completed, load a new one
+        loadParagraph();
+        charIndex = 0;  // Reset charIndex to start from the beginning of the new paragraph
       }
 
       let correctChars = charIndex - mistakes;
